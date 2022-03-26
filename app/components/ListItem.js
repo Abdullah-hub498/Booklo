@@ -1,21 +1,34 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  onPress,
+} from "react-native";
 import colors from "../config/colors";
 import AppText from "./AppText";
-function ListItem({ title, subTitle, image }) {
+import Swipeable from "react-native-gesture-handler/Swipeable";
+function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
   return (
-    <View style={styles.container}>
-      <Image style={styles.images} source={image} />
-      <View>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
-      </View>
-    </View>
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+        <View style={styles.container}>
+          <Image style={styles.images} source={image} />
+          <View style={styles.userContainer}>
+            <AppText style={styles.title}>{title}</AppText>
+            <AppText style={styles.subTitle}>{subTitle}</AppText>
+          </View>
+        </View>
+      </TouchableHighlight>
+    </Swipeable>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
+    padding: 5,
   },
   images: {
     width: 70,
@@ -28,6 +41,9 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: colors.medium,
+  },
+  userContainer: {
+    paddingTop: 10,
   },
 });
 export default ListItem;
