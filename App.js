@@ -11,6 +11,7 @@ import Icon from "./app/components/Icon";
 import colors from "./app/config/colors";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
+import ListtingsScreen from "./app/screens/ListtingsScreen";
 export default function App() {
-  return <AccountScreen />;
+  return <ListtingsScreen />;
 }
