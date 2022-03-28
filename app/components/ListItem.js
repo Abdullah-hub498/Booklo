@@ -10,31 +10,44 @@ import {
 import colors from "../config/colors";
 import AppText from "./AppText";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-function ListItem({ title, subTitle, image, onPress, renderRightActions }) {
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+function ListItem({
+  title,
+  subTitle,
+  image,
+  IconComponent,
+  onPress,
+  renderRightActions,
+}) {
   return (
-    <Swipeable renderRightActions={renderRightActions}>
-      <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
-        <View style={styles.container}>
-          <Image style={styles.images} source={image} />
-          <View style={styles.userContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
+    <GestureHandlerRootView>
+      <Swipeable renderRightActions={renderRightActions}>
+        <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
+          <View style={styles.container}>
+            {IconComponent}
+            {image && <Image style={styles.images} source={image} />}
+            <View style={styles.userContainer}>
+              <AppText style={styles.title}>{title}</AppText>
+              {subTitle && (
+                <AppText style={styles.subTitle}>{subTitle}</AppText>
+              )}
+            </View>
           </View>
-        </View>
-      </TouchableHighlight>
-    </Swipeable>
+        </TouchableHighlight>
+      </Swipeable>
+    </GestureHandlerRootView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    padding: 5,
+    padding: 15,
+    backgroundColor: colors.white,
   },
   images: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
   },
   title: {
     fontWeight: "400",
@@ -43,7 +56,7 @@ const styles = StyleSheet.create({
     color: colors.medium,
   },
   userContainer: {
-    paddingTop: 10,
+    marginLeft: 10,
   },
 });
 export default ListItem;
