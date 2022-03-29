@@ -12,6 +12,11 @@ import colors from "./app/config/colors";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import ListtingsScreen from "./app/screens/ListtingsScreen";
+import AppTextInput from "./app/components/AppTextInput";
 export default function App() {
-  return <ListtingsScreen />;
+  return (
+    <Screen>
+      <AppTextInput placeholder="Username" icon="email" />
+    </Screen>
+  );
 }
