@@ -7,14 +7,14 @@ import Screen from "../components/Screen";
 const initialMessages = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: "Abdullah Abid",
+    description: "Hy!Is this book still available?",
     image: require("../assets/design.png"),
   },
   {
     id: 2,
-    title: "T2",
-    description: "D2",
+    title: "Abdullah Abid",
+    description: "AOA I am intersting to buy Database Design Book",
     image: require("../assets/design.png"),
   },
 ];
