@@ -12,9 +12,15 @@ const listings = [
   },
   {
     id: 2,
-    title: "Database 2 Design",
-    price: 1000,
-    image: require("../assets/Database.jpg"),
+    title: "Starting Out with C++",
+    price: 250,
+    image: require("../assets/C.jpg"),
+  },
+  {
+    id: 3,
+    title: "DSA",
+    price: 350,
+    image: require("../assets/DSA.jpg"),
   },
 ];
 function ListtingsScreen(props) {
