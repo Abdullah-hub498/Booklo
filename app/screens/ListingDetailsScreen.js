@@ -11,18 +11,16 @@ import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 import AppButton from "../components/AppButton";
 
-function ListingDetailsScreen(props) {
+function ListingDetailsScreen({ route }) {
+  const listing = route.params;
   return (
     <SafeAreaView>
       <View>
         <ScrollView>
-          <Image
-            style={styles.image}
-            source={require("../assets/Database.jpg")}
-          />
+          <Image style={styles.image} source={listing.image} />
           <View style={styles.detailContainer}>
-            <AppText style={styles.title}>Database Systems</AppText>
-            <AppText style={styles.subPrice}>Rs250</AppText>
+            <AppText style={styles.title}>{listing.title}</AppText>
+            <AppText style={styles.subPrice}>Rs{listing.price}</AppText>
             <ListItem
               image={require("../assets/design.png")}
               title="Abdullah"

@@ -1,17 +1,14 @@
-import React, { useEffect, useState, Image, style } from "react";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-import Screen from "./app/components/Screen";
-import ImageInput from "./app/components/ImageInput";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import navigationTheme from "./app/navigation/navigationTheme";
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
-  const [imageUri, setImageUri] = useState();
-
   return (
-    <Screen>
-      <ImageInput
-        imageUri={imageUri}
-        onChangeImage={(uri) => setImageUri(uri)}
-      />
-    </Screen>
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
