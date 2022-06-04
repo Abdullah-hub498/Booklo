@@ -5,23 +5,19 @@ import listingsApi from "../api/listings";
 import Screen from "../components/Screen";
 import routes from "../navigation/routes";
 import colors from "../config/colors";
+import useApi from "../hooks/useApi";
 
 function ListtingsScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
+  const getListingsApi = useApi(listingsApi.getListings);
 
   useEffect(() => {
-    loadListings();
+    getListingsApi.request(1, 2, 3);
   }, []);
-
-  const loadListings = async () => {
-    const response = await listingsApi.getListings();
-    setListings(response.data);
-  };
 
   return (
     <Screen style={styles.screen}>
       <FlatList
-        data={listings}
+        data={getListingsApi.data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
