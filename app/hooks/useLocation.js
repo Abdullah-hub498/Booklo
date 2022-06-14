@@ -8,9 +8,14 @@ export default useLocation = () => {
     try {
       const { granted } = await Location.requestForegroundPermissionsAsync();
       if (!granted) return;
-      const {
+      /*const {
         coords: { latitude, longitude },
-      } = await Location.getLastKnownPositionAsync();
+      } = await Location.getLastKnownPositionAsync();*/
+      const lastKnownPosition = await Location.getLastKnownPositionAsync();
+      if (!lastKnownPosition) {
+        return;
+      }
+      const { latitude, longitude } = lastKnownPosition.coords;
       setLocation({ latitude, longitude });
     } catch (error) {
       console.log(error);
