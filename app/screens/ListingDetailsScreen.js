@@ -15,18 +15,19 @@ import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 import AppButton from "../components/AppButton";
 import ContactSellerForm from "../components/ContactSellerForm";
+import SimilarSuggestion from "./SimilarSuggestion";
 
 function ListingDetailsScreen({ route }) {
   const listing = route.params;
   return (
     <>
-      <ScrollView>
-        <SafeAreaView>
-          <KeyboardAvoidingView
-            behavior="position"
-            keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 100}
-          >
-            <View>
+      <SafeAreaView>
+        <ScrollView>
+          <View>
+            <KeyboardAvoidingView
+              behavior="position"
+              keyboardVerticalOffset={Platform.OS === "ios" ? 10 : 0}
+            >
               <Image
                 style={styles.image}
                 source={{ uri: listing.images[0].url }}
@@ -41,10 +42,11 @@ function ListingDetailsScreen({ route }) {
                 />
               </View>
               <ContactSellerForm listing={listing} />
-            </View>
-          </KeyboardAvoidingView>
-        </SafeAreaView>
-      </ScrollView>
+            </KeyboardAvoidingView>
+            <SimilarSuggestion />
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </>
   );
 }
